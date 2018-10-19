@@ -8,22 +8,22 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
-    public class CustomersController : Controller
-    {
-        //
-        // GET: /Customers/
-        public ActionResult Index()
-        {
+	public class CustomersController : Controller
+	{
+		//
+		// GET: /Customers/
+		public ActionResult Index()
+		{
 
-            var customers = new List<Customer>
-            {
-                new Customer{ Name = "John Constantine" },
-                new Customer{ Name = "Mary Jane" }
-            };
+			var customers = new List<Customer>
+			{
+				new Customer{ Name = "John Constantine" },
+				new Customer{ Name = "Mary Jane" }
+			};
 
-            var viewModel = new RandomMovieViewModel();
-            viewModel.Customers = customers;
-            return View(viewModel);
-        }
+			var viewModel = new RandomMovieViewModel();
+			viewModel.Customers = customers;
+			return View(viewModel);
+		}
 	}
 }
