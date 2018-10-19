@@ -5,12 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customers</h2>
 
-<ul>
-    @foreach(var customer in Model.Customers)
+<h1>Customers</h1>
+
+@if (Model.Customers.Count <= 0)
+{
+    <p>We don't have any customers yet, bro.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Customer</td>
+        </tr>
+    </thead>
+    @foreach (var customer in Model.Customers)
     {
-        <li>@customer.Name</li>
+        var customerLink = "/Customers/Details/" + customer.Id;
+        <tr>
+            <td><a href="@customerLink">@customer.Name</a></td>
+        </tr>
     }
-</ul>
+    </table>
+}
+
 

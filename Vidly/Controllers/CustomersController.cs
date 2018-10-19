@@ -17,13 +17,31 @@ namespace Vidly.Controllers
 
 			var customers = new List<Customer>
 			{
-				new Customer{ Name = "John Constantine" },
-				new Customer{ Name = "Mary Jane" }
+                new Customer{ Name = "John Constantine", Id = 1 },
+                new Customer{ Name = "Mary Jane" , Id = 2}
 			};
 
 			var viewModel = new RandomMovieViewModel();
 			viewModel.Customers = customers;
 			return View(viewModel);
+		}
+
+		public ActionResult Details(int id)
+		{
+            var customers = new List<Customer>
+            {
+                new Customer{ Name = "John Constantine", Id = 1 },
+                new Customer{ Name = "Mary Jane" , Id = 2}
+            };
+
+			var selectedCustomer = customers.Find(c => c.Id == id);
+
+            if (selectedCustomer == null)
+            {
+                return HttpNotFound();
+            }
+
+			return View(selectedCustomer);
 		}
 	}
 }
